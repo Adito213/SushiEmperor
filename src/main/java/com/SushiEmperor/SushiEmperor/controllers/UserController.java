@@ -18,8 +18,29 @@ public class UserController {
     UserController(UserRepository userRepo){
         this.userRepo = userRepo;
     }
+
     @GetMapping("/fetch")
     public List<Users> getAllUsers(){
         return userRepo.findAll();
+    }
+
+    @GetMapping("/fetch/firstname")
+    public List<Users> findUserByFirstName(String name){
+        return userRepo.findAllByFirstName(name);
+    }
+
+    @GetMapping("/fetch/lastname")
+    public List<Users> findUserByLastName(String name){
+        return userRepo.findAllByLastName(name);
+    }
+
+    @GetMapping("/fetch/email")
+    public List<Users> findUserByEmail(String email){
+        return userRepo.findAllByEmail(email);
+    }
+
+    @GetMapping("/fetch/number")
+    public List<Users> findUserByNumber(Long number){
+        return userRepo.findAllByNumber(number);
     }
 }
