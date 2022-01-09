@@ -2,10 +2,7 @@ package com.SushiEmperor.SushiEmperor.controllers;
 
 import com.SushiEmperor.SushiEmperor.entities.Users;
 import com.SushiEmperor.SushiEmperor.repositories.UserRepository;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,4 +40,7 @@ public class UserController {
     public List<Users> findUserByNumber(Long number){
         return userRepo.findAllByNumber(number);
     }
+
+
+
 }
