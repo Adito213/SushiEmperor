@@ -1,2 +1,0 @@
-# SushiEmperor
-University Project
