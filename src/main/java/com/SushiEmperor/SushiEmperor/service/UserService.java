@@ -1,28 +1,33 @@
 package com.SushiEmperor.SushiEmperor.service;
 
-import com.SushiEmperor.SushiEmperor.entities.Users;
-import com.SushiEmperor.SushiEmperor.repositories.UserRepository;
+import com.SushiEmperor.SushiEmperor.model.Users;
+import com.SushiEmperor.SushiEmperor.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
-    private final UserRepository userRepo;
+    @Autowired
+    private UserRepository userRepository;
 
-    public UserService(UserRepository userRepo) {
-        this.userRepo = userRepo;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    public Users registerUser(String password, String email){
+    public Users registerUser(String email, String password){
         if(email == null || password == null){
             return null;
         }else{
-            Users user = new Users(email, password);
-            return userRepo.save(user);
+            Users users = new Users();
+            users.setEmail(email);
+            users.setPassword(password);
+            return userRepository.save(users);
         }
     }
 
-    public Users authenticate(String email, String password){
-        return userRepo.findByEmailAndPassword(email,password).orElse(null);
+    public Users authentication(String email, String password){
+        return userRepository.findByEmailAndPassword(email, password).orElse(null);
     }
+
 }
