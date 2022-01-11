@@ -5,6 +5,9 @@ import com.SushiEmperor.SushiEmperor.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -30,4 +33,19 @@ public class UserService {
         return userRepository.findByEmailAndPassword(email, password).orElse(null);
     }
 
+    public boolean anotherUserUsingThisEmail(String email){
+        if(userRepository.existsByEmail(email) == true){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Users fillingData(String email, String firstName, String lastName, Integer num){
+        Users user = userRepository.getByEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setNumber(num);
+        return userRepository.save(user);
+    }
 }

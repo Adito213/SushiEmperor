@@ -35,7 +35,11 @@ public class UsersController {
     public String register(@ModelAttribute Users users){
         System.out.println("register request: " + users);
         Users registeredUser = userService.registerUser(users.getEmail(), users.getPassword());
-        return registeredUser == null ? "error_page" : "redirect:/login";
+        if(userService.anotherUserUsingThisEmail(users.getEmail()) == false) {
+            return registeredUser == null ? "error_page" : "redirect:/login";
+        }else{
+            return "used_email";
+        }
     }
 
     @PostMapping("/login")
