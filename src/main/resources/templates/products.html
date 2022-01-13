@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="form" >
+    <form method="post" action="/login" th:object="${loginRequest}">
+        <h2>Products</h2>
+
+        <div th:if="${not #lists.isEmpty(products)}">
+            <table class="table table-striped">
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.name}  "></td>
+                    <td th:text="${product.price}  "></td>
+                    <img th:src="@{product.pictureUrl}"/>
+                </tr>
+                <img src = "images/rice_roll.png" alt="">
+            </table>
+        </div>
+    </form>
+</div>
+</body>
+</html>

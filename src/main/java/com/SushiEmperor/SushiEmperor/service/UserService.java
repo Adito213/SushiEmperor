@@ -18,11 +18,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public Users registerUser(String email, String password){
+    public Users registerUser(String login, String email, String password){
         if(email == null || password == null){
             return null;
         }else{
             Users users = new Users();
+            users.setLogin(login);
             users.setEmail(email);
             users.setPassword(password);
             return userRepository.save(users);
@@ -34,7 +35,7 @@ public class UserService {
     }
 
     public boolean anotherUserUsingThisEmail(String email){
-        if(userRepository.existsByEmail(email) == true){
+        if(userRepository.existsByEmail(email)){
             return true;
         }else{
             return false;

@@ -34,11 +34,11 @@ public class UsersController {
     @PostMapping("/register")
     public String register(@ModelAttribute Users users){
         System.out.println("register request: " + users);
-        Users registeredUser = userService.registerUser(users.getEmail(), users.getPassword());
-        if(userService.anotherUserUsingThisEmail(users.getEmail()) == false) {
-            return registeredUser == null ? "error_page" : "redirect:/login";
-        }else{
+        if(userService.anotherUserUsingThisEmail(users.getEmail())) {
             return "used_email";
+        }else{
+            Users registeredUser = userService.registerUser(users.getLogin(), users.getEmail(), users.getPassword());
+            return registeredUser == null ? "error_page" : "redirect:/login";
         }
     }
 
@@ -47,8 +47,8 @@ public class UsersController {
         System.out.println("login request: " + users);
         Users authentication = userService.authentication(users.getEmail(), users.getPassword());
         if(authentication != null){
-            model.addAttribute("userLogin", authentication.getLogin());
-            return "personal_page";
+            model.addAttribute("userLogin", authentication.getEmail());
+            return "redirect:/products";
         }else{
             return "error_page";
         }
