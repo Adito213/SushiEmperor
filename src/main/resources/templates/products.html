@@ -5,6 +5,7 @@
     <title>Products</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="../images/favicon.png">
 </head>
 <body>
 <div class="products" >
@@ -14,18 +15,15 @@
         <div th:if="${not #lists.isEmpty(products)}">
 
                 <div th:each="product : ${products}">
-                    <img th:src="${product.pictureUrl}" alt ="" width=300 height=300/>
-                    <a th:text="${product.name}  "></a>
-                    <a th:text="${product.price}"></a>
-                    <button>Add</button>
+                    <img th:src="${product.pictureUrl}" alt ="" ><br>
+                    <p class = "name"><a th:text="${product.name}  "></a></p>
+                    <p class = "price">Price: <a th:text="${product.price}"></a> BGN</p><br>
+                    <button class = "button button1">Add to cart</button><br>
                 </div>
-            <div th:each="product : ${products}">
-                <img th:src="${product.pictureUrl}" alt ="" width=300 height=300/>
-                <a th:text="${product.name}  "></a>
-                <a th:text="${product.price}"></a>
-                <button>Add</button>
-            </div>
+            <button class = "button button2">Go to cart</button>
+
         </div>
+
     </div>
 </div>
 </body>
