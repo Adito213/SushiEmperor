@@ -8,20 +8,19 @@
 </head>
 <body>
 <div class="form" >
-    <form method="post" action="/login" th:object="${loginRequest}">
+    <div method="post" action="/login" th:object="${loginRequest}">
         <h2>Products</h2>
 
         <div th:if="${not #lists.isEmpty(products)}">
-            <table class="table table-striped">
-                <tr th:each="product : ${products}">
-                    <td th:text="${product.name}  "></td>
-                    <td th:text="${product.price}  "></td>
-                    <img th:src="@{product.pictureUrl}"/>
-                </tr>
-                <img src = "images/rice_roll.png" alt="">
-            </table>
+
+                <div th:each="product : ${products}">
+                    <img th:src="${product.pictureUrl}" alt ="" width=300 height=300/>
+                    <a th:text="${product.name}  "></a>
+                    <a th:text="${product.price}"></a>
+                    <button>Add</button><br>
+                </div>
         </div>
-    </form>
+    </div>
 </div>
 </body>
 </html>

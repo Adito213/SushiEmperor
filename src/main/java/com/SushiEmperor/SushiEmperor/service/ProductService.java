@@ -40,13 +40,15 @@ public class ProductService implements CommandLineRunner {
 
     @Override
     public void run(String...args) throws Exception {
-        Product authenticateProduct = new Product("Rice Roll", 23.00, " /images/rice_roll.png");
-        if(productRepository.existsByName(authenticateProduct.getName())){
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("Rice Roll", 23.00, "images/rice_roll.png"));
+        products.add(new Product("Combo Husumaki", 50.00, "images/combo_husumaki.png"));
+        for (Product product : products) {
+            if(productRepository.existsByName(product.getName())){
 
-        }else {
-            productRepository.save(authenticateProduct);
+            }else{
+                productRepository.save(product);
+            }
         }
     }
-
-
 }
