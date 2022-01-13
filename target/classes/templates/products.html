@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="form" >
+<div class="products" >
     <div method="post" action="/login" th:object="${loginRequest}">
         <h2>Products</h2>
 
@@ -19,6 +19,12 @@
                     <a th:text="${product.price}"></a>
                     <button>Add</button>
                 </div>
+            <div th:each="product : ${products}">
+                <img th:src="${product.pictureUrl}" alt ="" width=300 height=300/>
+                <a th:text="${product.name}  "></a>
+                <a th:text="${product.price}"></a>
+                <button>Add</button>
+            </div>
         </div>
     </div>
 </div>
