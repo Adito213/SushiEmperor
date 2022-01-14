@@ -66,6 +66,20 @@ p.price {
   color: white;
 }
 
+.button3 {
+  background-color: white;
+  color: black;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  border: 3px solid #ff8c1a;
+}
+
+.button3:hover {
+  background-color: #ff8c1a;
+  color: white;
+}
+
 .products{
     position: absolute;
       top: 15%;

@@ -21,13 +21,14 @@
 </head>
 <body>
 <div style="float:right">
-    <form th:action="@{/logout}" align="right" name="form1" method="post">
-        <label class="logoutLblPos">
-            <input name="submit2" type="submit" id="submit2" value="log out">
-        </label>
-    </form>
+
 </div>
 <div class="products" >
+    <form th:action="@{/logout}" align="right" name="form1" method="post">
+        <label class="logoutLblPos">
+            <button class = "button button3"> <input name="submit2" type="submit" id="submit2" value="Log out"></button>
+        </label>
+    </form>
     <div method="post">
         <h2>Products</h2>
 
