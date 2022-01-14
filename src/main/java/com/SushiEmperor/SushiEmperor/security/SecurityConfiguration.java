@@ -36,6 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN", "USER");
         auth.authenticationProvider(authenticationProvider());
     }
 
@@ -49,8 +50,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/cart")
                 .authenticated()
+                .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest()
-                .authenticated()
+                .permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")

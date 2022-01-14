@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View users in db</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="../images/favicon.png">
+</head>
+<body>
+<div class="form" >
+    <div method="post">
+        <h2>Users</h2>
+
+        <div th:if="${not #lists.isEmpty(users)}">
+
+            <div th:each="users : ${users}">
+                <p class = "name"><a th:text="${users.email}  "></a></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

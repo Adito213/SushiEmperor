@@ -1,12 +1,17 @@
 package com.SushiEmperor.SushiEmperor.service;
 
+import com.SushiEmperor.SushiEmperor.controller.dto.UserRegistrationDto;
 import com.SushiEmperor.SushiEmperor.model.Product;
+import com.SushiEmperor.SushiEmperor.model.Role;
+import com.SushiEmperor.SushiEmperor.model.Users;
 import com.SushiEmperor.SushiEmperor.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -50,5 +55,18 @@ public class ProductService implements CommandLineRunner {
                 productRepository.save(product);
             }
         }
+    }
+
+    public Product save(String name, Double price) {
+        Product pr;
+        if (name == null || price == null) {
+            return null;
+        } else {
+            pr = new Product();
+            pr.setName(name);
+            pr.setPrice(price);
+            pr.setPictureUrl("images/rice_roll.png");
+        }
+        return productRepository.save(pr);
     }
 }
