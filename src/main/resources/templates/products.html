@@ -6,10 +6,22 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="../images/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+         $(document).ready(function() {
+            $(".addToCartBtn").on("click", function(e) {
+                addToCart();
+            });
+         });
+
+         function addToCart(){
+            quantity = $("#quantity" + ).val();
+         }
+    </script>
 </head>
 <body>
 <div style="float:right">
-    <form align="right" name="form1" method="post">
+    <form th:action="@{/logout}" align="right" name="form1" method="post">
         <label class="logoutLblPos">
             <input name="submit2" type="submit" id="submit2" value="log out">
         </label>
@@ -25,7 +37,8 @@
                 <img th:src="${product.pictureUrl}" alt="" ><br>
                 <p class = "name"><a th:text="${product.name}  "></a></p>
                 <p class = "price">Price: <a th:text="${product.price}"></a> BGN</p><br>
-                <button class = "button button1" id="buttonAddToCart">Add to cart</button><br>
+                <input type="text" th:id="'quantity' + ${product.id}">
+                <button class = "button button1 addToCartBtn" >Add to cart</button><br>
             </div>
 
             <form th:action="@{/cart}" method="GET">
@@ -34,6 +47,6 @@
         </div>
     </div>
 </div>
-<script type="../static/js/add_to_cart.js"></script>
+
 </body>
 </html>

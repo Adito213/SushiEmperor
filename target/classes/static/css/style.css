@@ -65,6 +65,7 @@ p.price {
   background-color: #ff8c1a;
   color: white;
 }
+
 .products{
     position: absolute;
       top: 15%;
@@ -75,6 +76,15 @@ p.price {
       box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
       padding: 50px;
       box-sizing: border-box;
+}
+
+#login-submit{
+    background-color: #81E18D;
+    border: none;
+}
+
+#login-submit:hover{
+    background-color: #5AA745;
 }
 
 .cart{
@@ -99,7 +109,7 @@ position: absolute;
   top: 50%;
   left: 25%;
   transform: translate(-50%, -50%);
-  width: 350px;
+  width: 650px;
   min-height: 400px;
   background-color: #fff;
   box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
