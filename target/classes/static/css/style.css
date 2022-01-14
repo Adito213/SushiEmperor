@@ -67,9 +67,20 @@ p.price {
 }
 .products{
     position: absolute;
-      top: 25%;
+      top: 15%;
       left: 15%;
+      width: 900px;
+      min-height: 400px;
+      background-color: #fff;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+      padding: 50px;
+      box-sizing: border-box;
+}
 
+.cart{
+position: absolute;
+      top: 15%;
+      left: 15%;
       width: 900px;
       min-height: 400px;
       background-color: #fff;
@@ -81,7 +92,6 @@ p.price {
 .products h2 {
     font-weight: bold;
     font-size: 35px;
-
 }
 
 .form {
